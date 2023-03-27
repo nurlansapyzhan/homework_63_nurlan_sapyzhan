@@ -27,6 +27,11 @@
                     </a>
                     <div class="card-body">
                         <p class="card-text">{{ post.description }}</p>
+                        <a href="{% url 'like' post.pk %}">New like</a>
+                        <form action="{% url 'like' post.pk %}" method="post" class="post_like_form">
+                            {% csrf_token %}
+                            <button type="submit">Like</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -95,3 +96,15 @@ class CreateCommentView(View):
         comments = Comment.objects.filter(post=post)
         context = {'post': post, 'form': form, 'comments': comments}
         return render(request, 'post_detail.html', context)
+
+
+class LikePostView(View):
+    def post(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        user = request.user
+        if user in post.user_likes.all():
+            messages.error(request, 'Уже лайкали')
+        else:
+            post.user_likes.add(user)
+            post.save()
+        return redirect('index')
