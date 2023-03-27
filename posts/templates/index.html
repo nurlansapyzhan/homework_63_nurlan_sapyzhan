@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    Instagram
+{% endblock %}
+{% block content %}
+    {% include 'partial/search.html' %}
+    <p>Hello Instagram!</p>
+    {% if search_query %}
+        <h2>Search results for "{{ search_query }}":</h2>
+        {% for user in users %}
+            <a href="#">{{ user.username }}</a>
+        {% endfor %}
+    {% else %}
+        <a href="{% url 'logout' %}" class="">Logout</a>
+        <a href="{% url 'profile' user.pk %}">Info</a>
+        <a href="{% url 'add_post' %}">Add post</a>
+        {% for post in posts %}
+            <div class="cards_custom">
+                <div class="card mb-3 custom_post_card">
+                    <div class="card-header">
+                        <img src="uploads/{{ post.author.avatar }}" alt="author image" class="post_author_logo">
+                        <a href="{% url 'profile' post.author.pk %}" class="custom_post_user_link">{{ post.author }}</a>
+                    </div>
+                    <img src="uploads/{{ post.image }}" class="card-img-top post_image" alt="post image">
+                    <div class="card-body">
+                        <p class="card-text">{{ post.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

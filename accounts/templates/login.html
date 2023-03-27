@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+    Instagram
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="header"></div>
+    <div class="main">
+        <div class="main_blocks">
+            <div class="main_blocks_pic">
+                <img src="/static/images/index_phones.png" alt="phones">
+            </div>
+        </div>
+        <div class="main_blocks">
+            <div class="main_blocks_form">
+                <div class="login_form_div">
+                    <div class="login_form_div_logo">
+                        <img src="/static/images/instagram_logo.png" alt="Instagram" class="instagram_logo">
+                    </div>
+                </div>
+                <div class="login_form_form">
+                    <form method="post">
+                        <div class="form custom_form">
+                            {% csrf_token %}
+                            {% include 'partial/login_form.html' with button_text='Login' %}
+                        </div>
+                    </form>
+                </div>
+                <p class="register_text">У вас ещё нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

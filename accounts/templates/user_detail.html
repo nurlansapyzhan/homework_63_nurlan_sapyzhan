@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Пользователь{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+    <h1>Личная страница пользователя {{ user_obj.get_full_name|default:user_obj.username }}</h1>
+    <img class="avatar" src="/uploads/{{ user_obj.avatar }}" width="250" height="250" alt="user picture">
+    <p>Имя пользователя: {{ user_obj.username }}</p>
+    <p>Имя: {{ user_obj.first_name }}</p>
+    <p>Почта: {{ user_obj.email }}</p>
+    <a href=" {% url 'change' user_obj.pk %}" class="btn btn-primary">Редактировать</a>
+    <form method="post" action="{% url 'subscribe' user_obj.pk %}">
+        {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <button type="submit">Subscribe</button>
+    </form>
+{% endblock %}

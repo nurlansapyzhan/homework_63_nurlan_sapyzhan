@@ -1,0 +1,60 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main_blocks {
+    height: 840px;
+    margin-top: 140px;
+}
+
+.main_blocks_form {
+    border: lightgray 1px solid;
+}
+
+.login_form_div_logo {
+    align-items: center;
+}
+
+.instagram_logo {
+    height: 50px;
+    width: 174px;
+    margin-left: 73px;
+}
+
+.login_form_form {
+    margin: 10px;
+}
+
+.custom_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post_author_logo{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+}
+
+.post_image{
+    height: 300px;
+    padding: 5px;
+}
+
+.custom_post_card{
+    width: 500px;
+}
+
+.cards_custom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom_post_user_link{
+    text-decoration: none;
+}

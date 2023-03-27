@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="header"></div>
+        <div class="main">
+            <div class="main_blocks">
+                <div class="main_blocks_pic">
+                    <img src="/static/images/index_phones.png" alt="phones">
+                </div>
+            </div>
+            <div class="main_blocks">
+                <div class="main_blocks_form">
+                    <div class="login_form_div">
+                        <div class="login_form_div_logo">
+                            <img src="/static/images/instagram_logo.png" alt="Instagram" class="instagram_logo">
+                        </div>
+                    </div>
+                    <div class="login_form_form">
+                        <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+                            <div class="form custom_form">
+                                {% csrf_token %}
+                                {% include 'partial/register_form.html' with button_text='Register' %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
