@@ -1,14 +1,15 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db.models import Q
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 from django.utils.http import urlencode
+from django.views import View
 from django.views.generic import CreateView, ListView
 
 from accounts.models import Account
-from posts.forms import SearchForm
-from posts.models import Post
+from posts.forms import SearchForm, CommentPostForm
+from posts.models import Post, Comment
 
 User = get_user_model()
 
@@ -70,3 +71,27 @@ class AddPostView(CreateView):
 
     def get_success_url(self):
         return reverse('index')
+
+
+class CreateCommentView(View):
+
+    def get(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        form = CommentPostForm()
+        comments = Comment.objects.filter(post=post).order_by('pk')
+        context = {'post': post, 'form': form, 'comments': comments}
+        return render(request, 'post_detail.html', context)
+
+    def post(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        form = CommentPostForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            post.save()
+            return redirect('index')
+        comments = Comment.objects.filter(post=post)
+        context = {'post': post, 'form': form, 'comments': comments}
+        return render(request, 'post_detail.html', context)

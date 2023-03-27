@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="post-detail">
+        <div class="cards_custom">
+            <div class="card mb-3 custom_post_card">
+                <div class="card-header">
+                    <img src="uploads/{{ post.author.avatar }}" alt="author image" class="post_author_logo">
+                    <a href="{% url 'profile' post.author.pk %}" class="custom_post_user_link">{{ post.author }}</a>
+                </div>
+                <img src="uploads/{{ post.image }}" class="card-img-top post_image" alt="post image">
+                <div class="card-body">
+                    <p class="card-text">{{ post.description }}</p>
+                </div>
+            </div>
+        </div>
+        <ul class="comment-list">
+            {% for comment in comments %}
+                <li>
+                    <p>{{ comment.author }} said:</p>
+                    <p>{{ comment.content }}</p>
+                </li>
+            {% empty %}
+                <li>No comments yet.</li>
+            {% endfor %}
+        </ul>
+        <h2>Add a comment</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
