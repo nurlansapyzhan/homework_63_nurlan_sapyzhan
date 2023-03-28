@@ -47,7 +47,7 @@ class IndexView(ListView):
             else:
                 queryset = queryset.none()
         else:
-            subscriptions = self.request.user.subscriptions.all()
+            subscriptions = self.request.user.subscribers.all()
             queryset = queryset.filter(author__in=subscriptions) | queryset.filter(author=self.request.user)
         return queryset.order_by('-created_at')
 
