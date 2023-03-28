@@ -159,29 +159,108 @@
     margin-top: 10px;
 }
 
-.insta_logo_navbar_right{
+.insta_logo_navbar_right {
     width: 120px;
     height: 40px;
 }
 
-.custom_navbar_container{
-    justify-content: flex-start!important;
+.custom_navbar_container {
+    justify-content: flex-start !important;
 }
 
-.user_detail_image{
+.user_detail_image {
     height: 30px;
     width: 30px;
     border-radius: 15px;
     text-decoration: none;
 }
 
-.post_detail_image{
+.post_detail_image {
     height: 800px;
     width: 1000px;
 }
 
-.post_image_div{
+.post_image_div {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.like_button {
+    width: 20px;
+}
+
+.btn {
+    --bs-btn-border-color: none;
+}
+
+.logout_and_add_post_links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logut_add_post_link {
+    text-decoration: none;
+    color: rgb(142, 142, 142);
+}
+
+.profile_div {
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profile_info_div {
+    padding-left: 120px;
+}
+
+.profile_avatar {
+    border-radius: 50%;
+}
+
+.profile_username {
+    font-size: 34px;
+}
+
+.username_subscribe_div {
+    display: flex;
+}
+
+.subscribe_profile_form {
+    padding-top: 12px;
+    margin-left: 20px;
+}
+
+.counter_div {
+    display: flex;
+}
+
+.counter_custom {
+    margin-left: 10px;
+}
+
+.post_item {
+    border: black 1px solid;
+}
+
+.custom_post_image {
+    height: 636px;
+    margin: 10px;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding-left: 0;
+}
+
+.inside_form_div {
+    display: flex;
+    height: 33px;
+}
+
+.custom_button_form {
+    margin-left: 15px;
 }

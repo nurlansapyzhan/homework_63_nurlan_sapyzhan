@@ -85,8 +85,17 @@ class ProfileView(LoginRequiredMixin, DetailView):
     context_object_name = 'user_obj'
 
     def get_context_data(self, **kwargs):
-        return super().get_context_data(**kwargs)
-
+        context = super().get_context_data(**kwargs)
+        user = self.object
+        user_obj = self.get_object()
+        posts = user_obj.posts.all()
+        context['posts'] = posts
+        context['posts_count'] = user.posts.count()
+        context['subscriber_count'] = user.subscribers.count()
+        context['subscription_count'] = user.subscriptions.count()
+        for post in posts:
+            post.like_count = post.user_likes.count()
+        return context
 
 class SubscribeView(View):
     def post(self, request, pk):

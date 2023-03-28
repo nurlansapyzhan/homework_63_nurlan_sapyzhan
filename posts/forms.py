@@ -12,5 +12,8 @@ class CommentPostForm(forms.ModelForm):
         model = Comment
         fields = ('text',)
         labels = {
-            'text': 'Комментарий'
+            'text': ''
+        }
+        widgets = {
+            'text': forms.TextInput(attrs={'placeholder': 'Добавьте комментарий...'})
         }
