@@ -3,33 +3,55 @@
     Instagram
 {% endblock %}
 {% block content %}
-<div class="container">
-    <div class="header"></div>
-    <div class="main">
-        <div class="main_blocks">
-            <div class="main_blocks_pic">
-                <img src="/static/images/index_phones.png" alt="phones">
+    <div class="container">
+        <div class="header"></div>
+        <div class="main">
+            <div class="main_blocks">
+                <div class="main_blocks_pic">
+                    <img src="/static/images/index_phones.png" alt="phones">
+                </div>
             </div>
-        </div>
-        <div class="main_blocks">
-            <div class="main_blocks_form">
-                <div class="login_form_div">
-                    <div class="login_form_div_logo">
-                        <img src="/static/images/instagram_logo.png" alt="Instagram" class="instagram_logo">
+            <div class="main_blocks">
+                <div class="main_blocks_form">
+                    <div class="login_form_div">
+                        <div class="login_form_div_logo">
+                            <img src="/static/images/instagram_logo.png" alt="Instagram" class="instagram_logo">
+                        </div>
+                    </div>
+                    <div class="login_form_form">
+                        <form method="post">
+                            <div class="form custom_form">
+                                {% csrf_token %}
+                                {% include 'partial/login_form.html' with button_text='Login' %}
+                            </div>
+                        </form>
+                    </div>
+                    <div class="or_text">
+                        <p class="login_or_custom">ИЛИ</p>
+                    </div>
+                    <div class="facebook_login_div">
+                        <p class="facebook_login">
+                            <a href="#" class="facebook_login_link">
+                                Войти через Facebook
+                            </a>
+                        </p>
+                    </div>
+                    <div class="forget_password_div">
+                        <p class="forget_password">
+                            <a href="#" class="forget_password_link">
+                                Забыли пароль?
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div class="login_form_form">
-                    <form method="post">
-                        <div class="form custom_form">
-                            {% csrf_token %}
-                            {% include 'partial/login_form.html' with button_text='Login' %}
-                        </div>
-                    </form>
+                <div class="main_blocks_register">
+                    <div class="register_card mt-3">
+                        <p class="register_text mt-2">У вас ещё нет аккаунта?<br> <a
+                                href="{% url 'register' %}" class="custom_register_button_login">Зарегистрироваться</a>
+                        </p>
+                    </div>
                 </div>
-                <p class="register_text">У вас ещё нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a>
-                </p>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

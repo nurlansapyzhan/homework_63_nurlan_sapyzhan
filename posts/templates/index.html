@@ -2,9 +2,14 @@
 {% block title %}
     Instagram
 {% endblock %}
+{% block menu %}
+    <a href="{% url 'profile' user.pk %}" class="my_profile">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+        </svg>
+    </a>
+{% endblock %}
 {% block content %}
-    {% include 'partial/search.html' %}
-    <p>Hello Instagram!</p>
     {% if search_query %}
         <h2>Search results for "{{ search_query }}":</h2>
         {% for user in users %}
@@ -12,22 +17,25 @@
         {% endfor %}
     {% else %}
         <a href="{% url 'logout' %}" class="">Logout</a>
-        <a href="{% url 'profile' user.pk %}">Info</a>
         <a href="{% url 'add_post' %}">Add post</a>
         {% for post in posts %}
             <div class="cards_custom">
                 <div class="card mb-3 custom_post_card">
                     <div class="card-header">
+                        <a href="{% url 'profile' post.author.pk %}" class="user_detail_image">
+                            <img src="uploads/{{ post.author.avatar }}" alt="author image" class="user_detail_image">
+                        </a>
                         <a href="{% url 'profile' post.author.pk %}" class="custom_post_user_link">
                             {{ post.author }}
                         </a>
                     </div>
-                    <a href="{% url 'post_detail' post.pk %}" class="post_detail_image">
-                        <img src="uploads/{{ post.author.avatar }}" alt="author image" class="post_author_logo">
-                    </a>
+                    <div class="post_image_div">
+                        <a href="{% url 'post_detail' post.pk %}" class="post_detail_image">
+                            <img src="uploads/{{ post.author.avatar }}" alt="author image" class="post_detail_image">
+                        </a>
+                    </div>
                     <div class="card-body">
                         <p class="card-text">{{ post.description }}</p>
-                        <a href="{% url 'like' post.pk %}">New like</a>
                         <form action="{% url 'like' post.pk %}" method="post" class="post_like_form">
                             {% csrf_token %}
                             <button type="submit">Like</button>

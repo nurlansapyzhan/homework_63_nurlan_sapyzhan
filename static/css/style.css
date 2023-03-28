@@ -16,6 +16,7 @@
 
 .login_form_div_logo {
     align-items: center;
+    padding-top: 50px;
 }
 
 .instagram_logo {
@@ -34,27 +35,153 @@
     align-items: center;
 }
 
-.post_author_logo{
+.post_author_logo {
     height: 30px;
     width: 30px;
     border-radius: 10px;
 }
 
-.post_image{
+.post_image {
     height: 300px;
     padding: 5px;
 }
 
-.custom_post_card{
-    width: 500px;
+.custom_post_card {
+    width: 1000px;
 }
 
-.cards_custom{
+.cards_custom {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.custom_post_user_link{
+.custom_post_user_link {
     text-decoration: none;
+    color: black;
+}
+
+.login_button_custom {
+    width: 250px;
+    background-color: rgb(0, 149, 246);
+}
+
+.or_text {
+    display: flex;
+    justify-content: center;
+}
+
+.login_or_custom {
+    color: rgb(142, 142, 142);
+    font-size: .8125rem;
+}
+
+.facebook_login_div {
+    display: flex;
+    justify-content: center;
+}
+
+.facebook_login_link {
+    text-decoration: none;
+    color: #385185;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.forget_password_div {
+    display: flex;
+    justify-content: center;
+}
+
+.forget_password_link {
+    text-decoration: none;
+    color: rgb(0, 55, 107);
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 12px;
+}
+
+.main_blocks_form {
+    width: 340px;
+}
+
+.register_card {
+    border: lightgray 1px solid;
+    display: flex;
+    justify-content: space-around;
+}
+
+.register_text {
+    text-align: center;
+    color: rgb(38, 38, 38);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.custom_register_button_login {
+    text-decoration: none;
+    color: rgb(0, 149, 246);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.register_header {
+    color: rgb(142, 142, 142);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+}
+
+.privacy_text_custom {
+    line-height: 16px;
+    font-weight: 400;
+    color: rgb(142, 142, 142);
+    text-align: center;
+}
+
+.privacy_link_custom {
+    text-decoration: none;
+    color: rgb(0, 55, 107);
+}
+
+.search_form_custom {
+    width: 300px;
+    padding-top: 10px;
+}
+
+.my_profile {
+    height: 50px;
+    width: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+
+.insta_logo_navbar_right{
+    width: 120px;
+    height: 40px;
+}
+
+.custom_navbar_container{
+    justify-content: flex-start!important;
+}
+
+.user_detail_image{
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.post_detail_image{
+    height: 800px;
+    width: 1000px;
+}
+
+.post_image_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

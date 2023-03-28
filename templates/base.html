@@ -11,12 +11,22 @@
     <title>{% block title %}Blog{% endblock %}</title>
 </head>
 <body>
-<nav class="navbar">
-    <div class="container">
-        <ul class="menu">
-        </ul>
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid custom_navbar_container">
+        <img class="insta_logo_navbar_left me-2" src="/static/images/insta_icon.ico" alt="icon">
+        <a class="navbar-brand" href="{% url 'index' %}"><img class="insta_logo_navbar_right" src="/static/images/instagram_logo.png"
+                                                              alt="Instagram"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
+    {% include 'partial/search.html' %}
+    {% block menu %}
+    {% endblock %}
 </nav>
+{% endif %}
 <div class="container">
     {% block content %}{% endblock %}
 </div>
