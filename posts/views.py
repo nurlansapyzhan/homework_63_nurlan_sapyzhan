@@ -48,7 +48,7 @@ class IndexView(ListView):
                 queryset = queryset.none()
         else:
             subscriptions = self.request.user.subscribers.all()
-            queryset = queryset.filter(author__in=subscriptions) | queryset.filter(author=self.request.user)
+            queryset = queryset.filter(author__in=subscriptions)
         return queryset.order_by('-created_at')
 
     def get_context_data(self, object_list=None, **kwargs):
